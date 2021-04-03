@@ -631,14 +631,16 @@ footer *{color: #fff;}
 
 /* monthShow */
 #calendar_table{width: 100%;}
-#calendar_table tr{display: grid; grid-template-columns: repeat(7,1fr);}
+#calendar_table tr > *{width: calc(100% / 7);}
 #calendar_table .hide{background-color: #eee;}
 #calendar_table thead tr *{border-bottom: 3px solid #888;padding: 1em 0.5em;}
 #calendar_table tbody tr > *{border-bottom: 1px solid #888;}
 #calendar_table tbody tr:last-child > *{border: none;}
 #calendar_table td p{padding: 0.5em;margin: 0;}
-#calendar_table .calendar_list{width: 100%;height: 100px;}
-#calendar_table .calendar_list::-webkit-scrollbar{display: none;}
+#calendar_table .calendar_list{width: 160px;height: 100px;overflow: auto;margin-bottom: 0.5em;}
+#calendar_table .calendar_list::-webkit-scrollbar{width: 7px;}
+#calendar_table .calendar_list::-webkit-scrollbar-thumb{background-color: #23547B;}
+#calendar_table .calendar_list::-webkit-scrollbar-track{background-color: #ddd;}
 #calendar_table thead th:first-child,#calendar_table tbody tr td:first-child,#calendar_table tbody tr td:first-child > p{color: rgb(243, 84, 84);border-color: rgb(243, 84, 84);}
 #calendar_table thead th:last-child,#calendar_table tbody tr td:last-child,#calendar_table tbody tr td:last-child > p{color:#23547B;border-color: #23547B;}
 
@@ -725,13 +727,33 @@ footer *{color: #fff;}
 .open_wrap thead th{border-width:1px;border-color: #23547B;}
 
 /* calenadr */
-.calendar_item{cursor: pointer;}
+.calendar_item{
+    padding: 0 !important;
+    cursor: pointer;
+    width: 100%;
+    height: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
 .year_item{
     width: calc(100% / 4);
-    border-bottom: 1px solid #ddd;
-    padding: 0.5em;
+    border-top: 3px solid #23547B;
+    padding: 1em;
     margin: 0.5em 0;
 }
 
-.year_title{font-size: 1.1em; font-weight: bold; color: #23547B;}
-.year_list{min-height: 150px;}
+.year_title{font-size: 1.5em; font-weight: bold; color: #23547B;}
+.year_list{height: 200px;overflow: auto;}
+.year_list::-webkit-scrollbar{width: 7px;}
+.year_list::-webkit-scrollbar-thumb{background-color: #23547B;}
+.year_list::-webkit-scrollbar-track{background-color: #ddd;}
+.year_title .title{
+    margin: 0;
+    width: 90%;
+    font-size: 0.7em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

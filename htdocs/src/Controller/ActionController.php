@@ -58,7 +58,6 @@ class ActionController{
         if(!file_exists($path)) return exit;
         header('Content-Description:application/octet-stream');
         header("Content-Disposition:attachment;filename=$name");
-        header("Content-Length:".filesize($path));
         readfile($path);  
     }
 }

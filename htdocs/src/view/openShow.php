@@ -27,7 +27,7 @@
                     </div>
                     <div class="content_box">
                         <div class="open_header">
-                            <h5>전문주소 : /openAPI/showList.php</h5>
+                            <h5 class="m-0">전문주소 : /openAPI/showList.php</h5>
                         </div>
                         <div class="open_list">
                             <div class="open_wrap">

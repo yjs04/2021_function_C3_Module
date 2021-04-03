@@ -46,19 +46,23 @@
                                         <th>Sat</th>
                                     </tr>
                                 </thead>
-                                <?php var_dump($data);?>
                                 <tbody>
                                     <?php $day = $calendar['start'];?>
                                     <?php while($day <= $calendar['end']):?>
                                     <?php if(date("w",$day) == 0):?>
                                     <tr>
                                     <?php endif;?>
-                                    <td>
+                                    <td class="<?=($day < $calendar['first']) || ($day > $calendar['last']) ? "hide" : "" ?>">
                                         <p><?=date("d",$day)?></p>
                                         <div class="calendar_list">
                                             <?php foreach($data as $item):?>
                                             <?php if($item->showDate == date("Y-m-d",$day)):?>
-                                            <p class="calendar_item m-0" data-idx="<?=$item->showUid?>"><?=$item->showName?></p>
+                                            <?php 
+                                                $d_day = intval((strtotime($item->showDate) - strtotime(date("Y-m-d"))) / 86400) * -1;
+                                                $d_day = $d_day > 0 ? "+".$d_day : $d_day;
+                                                $d_day = $d_day == 0 ? "-day" : $d_day;
+                                            ?>
+                                            <p class="calendar_item m-0" data-idx="<?=$item->showUid?>">[D<?=$d_day?>]<?=$item->showName?></p>
                                             <?php endif;?>
                                             <?php endforeach;?>
                                         </div>
